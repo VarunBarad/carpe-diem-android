@@ -40,7 +40,7 @@ class ProjectsListAdapter : ListAdapter<Project, ProjectsListAdapter.ViewHolder>
 		private val viewBinding: ListItemProjectBinding,
 		private val editButtonClickListener: (Project) -> Unit,
 		private val deleteButtonClickListener: (Project) -> Unit,
-	): RecyclerView.ViewHolder(viewBinding.root) {
+	) : RecyclerView.ViewHolder(viewBinding.root) {
 		fun bind(project: Project) {
 			viewBinding.textViewProjectName.text = project.name
 

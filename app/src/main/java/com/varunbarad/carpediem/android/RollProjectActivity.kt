@@ -1,11 +1,11 @@
 package com.varunbarad.carpediem.android
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.varunbarad.carpediem.android.databinding.ActivityRollProjectBinding
 import org.threeten.bp.LocalDate
 
@@ -51,10 +51,12 @@ class RollProjectActivity : AppCompatActivity() {
 				openAddProjectScreen()
 				true
 			}
+
 			R.id.buttonListProjects -> {
 				openListProjectsScreen()
 				true
 			}
+
 			else -> super.onOptionsItemSelected(item)
 		}
 	}
@@ -92,6 +94,7 @@ class RollProjectActivity : AppCompatActivity() {
 			0 -> {
 				Toast.makeText(this, "No project in slot $slotString", Toast.LENGTH_SHORT).show()
 			}
+
 			1 -> {
 				val project = availableProjects.first()
 				viewBinding.textViewRolledProject.text = project.name
@@ -101,6 +104,7 @@ class RollProjectActivity : AppCompatActivity() {
 
 				currentProject = project
 			}
+
 			else -> {
 				val project = availableProjects.random()
 				if (project.name != viewBinding.textViewRolledProject.text.toString()) {

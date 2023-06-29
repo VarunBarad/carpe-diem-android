@@ -2,10 +2,9 @@ package com.varunbarad.carpediem.android
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.varunbarad.carpediem.android.databinding.ActivityAddProjectBinding
+import androidx.appcompat.app.AppCompatActivity
 import com.varunbarad.carpediem.android.databinding.ActivityEditProjectBinding
 import java.util.UUID
 

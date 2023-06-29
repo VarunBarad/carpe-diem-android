@@ -1,7 +1,7 @@
 package com.varunbarad.carpediem.android
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.varunbarad.carpediem.android.databinding.ActivityListProjectsBinding
 
 class ListProjectsActivity : AppCompatActivity() {
@@ -51,6 +51,7 @@ class ListProjectsActivity : AppCompatActivity() {
 
 					return@setOnItemSelectedListener true
 				}
+
 				R.id.slot10 -> {
 					val fragment = supportFragmentManager.findFragmentByTag(
 						ListProjects10Fragment.FRAGMENT_TAG,
@@ -66,6 +67,7 @@ class ListProjectsActivity : AppCompatActivity() {
 
 					return@setOnItemSelectedListener true
 				}
+
 				R.id.slot30 -> {
 					val fragment = supportFragmentManager.findFragmentByTag(
 						ListProjects30Fragment.FRAGMENT_TAG,

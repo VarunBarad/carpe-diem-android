@@ -1,8 +1,8 @@
 package com.varunbarad.carpediem.android
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.varunbarad.carpediem.android.databinding.ActivityAddProjectBinding
 
 class AddProjectActivity : AppCompatActivity() {

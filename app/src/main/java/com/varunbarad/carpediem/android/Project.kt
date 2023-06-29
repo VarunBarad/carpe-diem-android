@@ -3,7 +3,6 @@ package com.varunbarad.carpediem.android
 import androidx.recyclerview.widget.DiffUtil
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import com.squareup.moshi.ToJson
 import org.threeten.bp.LocalDate
 import java.util.UUID
 

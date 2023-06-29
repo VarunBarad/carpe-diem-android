@@ -3,7 +3,6 @@ package com.varunbarad.carpediem.android
 import android.content.Context
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
-import org.threeten.bp.LocalDate
 import java.util.UUID
 
 class StorageHelper(
@@ -16,7 +15,8 @@ class StorageHelper(
 		private const val KEY_DATABASE = "database"
 	}
 
-	private val sharedPreferences = context.getSharedPreferences("carpe-diem-database", Context.MODE_PRIVATE)
+	private val sharedPreferences =
+		context.getSharedPreferences("carpe-diem-database", Context.MODE_PRIVATE)
 	private val moshi = Moshi.Builder()
 		.add(LocalDateJsonAdapter())
 		.add(UUIDJsonAdapter())
