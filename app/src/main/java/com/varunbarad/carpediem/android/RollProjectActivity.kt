@@ -51,12 +51,23 @@ class RollProjectActivity : AppCompatActivity() {
 				openAddProjectScreen()
 				true
 			}
+			R.id.buttonListProjects -> {
+				openListProjectsScreen()
+				true
+			}
 			else -> super.onOptionsItemSelected(item)
 		}
 	}
 
 	private fun openAddProjectScreen() {
 		val intent = Intent(this, AddProjectActivity::class.java).apply {
+			putExtra(Intent.EXTRA_REFERRER, RollProjectActivity::class.java.simpleName)
+		}
+		startActivity(intent)
+	}
+
+	private fun openListProjectsScreen() {
+		val intent = Intent(this, ListProjectsActivity::class.java).apply {
 			putExtra(Intent.EXTRA_REFERRER, RollProjectActivity::class.java.simpleName)
 		}
 		startActivity(intent)

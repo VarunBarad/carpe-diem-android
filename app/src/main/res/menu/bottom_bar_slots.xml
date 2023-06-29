@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item
+			android:id="@+id/slot03"
+			android:title="03 mins" />
+	<item
+			android:id="@+id/slot10"
+			android:title="10 mins" />
+	<item
+		android:id="@+id/slot30"
+		android:title="30 mins" />
+</menu>

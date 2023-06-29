@@ -9,4 +9,11 @@
         android:title="Add Project"
         app:showAsAction="always"
         tools:ignore="AlwaysShowAction" />
+    <item
+        android:id="@+id/buttonListProjects"
+        android:icon="@drawable/ic_list"
+        android:iconTint="?attr/colorOnPrimary"
+        android:title="List Projects"
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction" />
 </menu>

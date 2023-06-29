@@ -26,7 +26,13 @@
 		</activity>
 		<activity
 				android:name=".AddProjectActivity"
-				android:exported="true"
+				android:exported="false"
+				android:parentActivityName=".RollProjectActivity"
+				android:screenOrientation="portrait"
+				tools:ignore="LockedOrientationActivity" />
+		<activity
+				android:name=".ListProjectsActivity"
+				android:exported="false"
 				android:parentActivityName=".RollProjectActivity"
 				android:screenOrientation="portrait"
 				tools:ignore="LockedOrientationActivity" />

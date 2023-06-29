@@ -86,4 +86,12 @@ class StorageHelper(
 
 		return getAllProjects().find { it.id == projectId }
 	}
+
+	fun deleteProject(projectId: UUID) {
+		val existingProjects = getAllProjects()
+		val updatedProjects = existingProjects.filter { it.id != projectId }
+		sharedPreferences.edit()
+			.putString(KEY_DATABASE, projectListAdapter.toJson(updatedProjects))
+			.apply()
+	}
 }
