@@ -36,7 +36,8 @@
 					android:id="@+id/inputNameEditText"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:hint="Project name" />
+					android:hint="Project name"
+					android:inputType="textCapSentences" />
 		</com.google.android.material.textfield.TextInputLayout>
 		
 		<RadioGroup
