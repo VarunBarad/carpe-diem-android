@@ -65,8 +65,10 @@ class ListProjects30Fragment : Fragment() {
 	}
 
 	private fun editProjectListener(project: Project) {
-		// ToDo: Navigate to update-project screen
-		Toast.makeText(this.requireContext(), "Edit project: ${project.name}", Toast.LENGTH_SHORT).show()
+		EditProjectActivity.start(
+			context = this.requireContext(),
+			projectId = project.id,
+		)
 	}
 
 	private fun deleteProjectListener(project: Project) {

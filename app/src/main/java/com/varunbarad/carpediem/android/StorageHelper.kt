@@ -94,4 +94,8 @@ class StorageHelper(
 			.putString(KEY_DATABASE, projectListAdapter.toJson(updatedProjects))
 			.apply()
 	}
+
+	fun getProject(projectId: UUID): Project? {
+		return getAllProjects().find { it.id == projectId }
+	}
 }

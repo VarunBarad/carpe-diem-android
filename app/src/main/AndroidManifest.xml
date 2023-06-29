@@ -36,6 +36,12 @@
 				android:parentActivityName=".RollProjectActivity"
 				android:screenOrientation="portrait"
 				tools:ignore="LockedOrientationActivity" />
+		<activity
+				android:name=".EditProjectActivity"
+				android:exported="false"
+				android:parentActivityName=".ListProjectsActivity"
+				android:screenOrientation="portrait"
+				tools:ignore="LockedOrientationActivity" />
 	</application>
 
 </manifest>
