@@ -7,9 +7,11 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.varunbarad.carpediem.android.databinding.ActivityRollProjectBinding
+import org.threeten.bp.LocalDate
 
 class RollProjectActivity : AppCompatActivity() {
 	private lateinit var viewBinding: ActivityRollProjectBinding
+	private var currentProject: Project? = null
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -26,6 +28,7 @@ class RollProjectActivity : AppCompatActivity() {
 		viewBinding.buttonSlot03.setOnClickListener { rollProject(Slot.SLOT_03) }
 		viewBinding.buttonSlot10.setOnClickListener { rollProject(Slot.SLOT_10) }
 		viewBinding.buttonSlot30.setOnClickListener { rollProject(Slot.SLOT_30) }
+		viewBinding.buttonMarkDone.setOnClickListener { markProjectDone() }
 	}
 
 	override fun onStop() {
@@ -34,6 +37,7 @@ class RollProjectActivity : AppCompatActivity() {
 		viewBinding.buttonSlot03.setOnClickListener(null)
 		viewBinding.buttonSlot10.setOnClickListener(null)
 		viewBinding.buttonSlot30.setOnClickListener(null)
+		viewBinding.buttonMarkDone.setOnClickListener(null)
 	}
 
 	override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -47,7 +51,6 @@ class RollProjectActivity : AppCompatActivity() {
 				openAddProjectScreen()
 				true
 			}
-
 			else -> super.onOptionsItemSelected(item)
 		}
 	}
@@ -67,8 +70,13 @@ class RollProjectActivity : AppCompatActivity() {
 		}
 		viewBinding.textViewCurrentSlot.text = slotString
 
+		val today = LocalDate.now()
 		val storageHelper = StorageHelper(this)
-		val availableProjects = storageHelper.getAllProjects().filter { it.slot == slot }
+		val availableProjects = storageHelper.getAllProjects().filter {
+			val slotMatches = it.slot == slot
+			val lastDoneBeforeToday = it.lastDoneOn == null || it.lastDoneOn < today
+			slotMatches && lastDoneBeforeToday
+		}
 		when (availableProjects.size) {
 			0 -> {
 				Toast.makeText(this, "No project in slot $slotString", Toast.LENGTH_SHORT).show()
@@ -77,16 +85,43 @@ class RollProjectActivity : AppCompatActivity() {
 				val project = availableProjects.first()
 				viewBinding.textViewRolledProject.text = project.name
 				viewBinding.textViewCurrentSlot.text = slotString
+
+				viewBinding.buttonMarkDone.isEnabled = true
+
+				currentProject = project
 			}
 			else -> {
 				val project = availableProjects.random()
 				if (project.name != viewBinding.textViewRolledProject.text.toString()) {
 					viewBinding.textViewRolledProject.text = project.name
 					viewBinding.textViewCurrentSlot.text = slotString
+
+					viewBinding.buttonMarkDone.isEnabled = true
+
+					currentProject = project
 				} else {
 					rollProject(slot)
 				}
 			}
+		}
+	}
+
+	private fun markProjectDone() {
+		val project = currentProject
+		if (project != null) {
+			val updatedProject = project.copy(
+				lastDoneOn = LocalDate.now(),
+			)
+
+			val storageHelper = StorageHelper(this)
+			storageHelper.updateProject(
+				projectId = project.id,
+				updatedProject = updatedProject,
+			)
+			viewBinding.textViewRolledProject.text = ""
+			viewBinding.textViewCurrentSlot.text = ""
+			viewBinding.buttonMarkDone.isEnabled = false
+			currentProject = null
 		}
 	}
 }

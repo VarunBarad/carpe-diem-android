@@ -76,4 +76,14 @@ class StorageHelper(
 			return getAllProjects().find { it.slot == slot && it.name == projectName }
 		}
 	}
+
+	fun updateProject(projectId: UUID, updatedProject: Project): Project? {
+		val existingProjects = getAllProjects()
+		val updatedProjects = existingProjects.map { if (it.id == projectId) updatedProject else it }
+		sharedPreferences.edit()
+			.putString(KEY_DATABASE, projectListAdapter.toJson(updatedProjects))
+			.apply()
+
+		return getAllProjects().find { it.id == projectId }
+	}
 }

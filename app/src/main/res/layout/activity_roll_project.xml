@@ -40,13 +40,25 @@
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
 				android:layout_marginBottom="16dp"
-				app:layout_constraintBottom_toTopOf="@id/buttonSlot10"
+				app:layout_constraintBottom_toTopOf="@id/buttonMarkDone"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
 				android:textAlignment="center"
 				android:textSize="32sp"
 				android:textStyle="bold"
 				tools:text="10 mins" />
+		
+		<Button
+				android:id="@+id/buttonMarkDone"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="16dp"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintBottom_toTopOf="@id/buttonSlot10"
+				android:enabled="false"
+				android:text="Mark Done"
+				tools:ignore="VisualLintButtonSize" />
 		
 		<Button
 				android:id="@+id/buttonSlot03"
