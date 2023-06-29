@@ -1,7 +1,10 @@
 package com.varunbarad.carpediem.android
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.varunbarad.carpediem.android.databinding.ActivityRollProjectBinding
 
@@ -33,6 +36,28 @@ class RollProjectActivity : AppCompatActivity() {
 		viewBinding.buttonSlot30.setOnClickListener(null)
 	}
 
+	override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+		menuInflater.inflate(R.menu.options_roll_project, menu)
+		return true
+	}
+
+	override fun onOptionsItemSelected(item: MenuItem): Boolean {
+		return when (item.itemId) {
+			R.id.buttonAddProject -> {
+				openAddProjectScreen()
+				true
+			}
+			else -> super.onOptionsItemSelected(item)
+		}
+	}
+
+	private fun openAddProjectScreen() {
+		val intent = Intent(this, AddProjectActivity::class.java).apply {
+			putExtra(Intent.EXTRA_REFERRER, RollProjectActivity::class.java.simpleName)
+		}
+		startActivity(intent)
+	}
+
 	private fun rollProject(slot: Slot) {
 		val slotString = when (slot) {
 			Slot.SLOT_03 -> "03 mins"
@@ -44,8 +69,12 @@ class RollProjectActivity : AppCompatActivity() {
 		val storageHelper = StorageHelper(this)
 		val project = storageHelper.getAllProjects().filter { it.slot == slot }.randomOrNull()
 		if (project != null) {
-			viewBinding.textViewRolledProject.text = project.name
-			viewBinding.textViewCurrentSlot.text = slotString
+			if (project.name != viewBinding.textViewRolledProject.text.toString()) {
+				viewBinding.textViewRolledProject.text = project.name
+				viewBinding.textViewCurrentSlot.text = slotString
+			} else {
+				rollProject(slot)
+			}
 		} else {
 			Toast.makeText(this, "No project in slot $slotString", Toast.LENGTH_SHORT).show()
 		}
