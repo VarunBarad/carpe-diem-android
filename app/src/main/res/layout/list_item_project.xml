@@ -18,13 +18,14 @@
 			app:layout_constraintEnd_toStartOf="@id/buttonEditProject"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintBottom_toBottomOf="parent"
+			android:textSize="24sp"
 			tools:text="Stretches and a lot of writing long texts."/>
 	
 	<Button
 			android:id="@+id/buttonEditProject"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginEnd="16dp"
+			android:layout_marginEnd="8dp"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintEnd_toStartOf="@id/buttonDeleteProject"
 			android:text="Edit" />
