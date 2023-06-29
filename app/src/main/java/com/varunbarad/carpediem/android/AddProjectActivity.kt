@@ -3,15 +3,15 @@ package com.varunbarad.carpediem.android
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.varunbarad.carpediem.android.databinding.ActivityMainBinding
+import com.varunbarad.carpediem.android.databinding.ActivityAddProjectBinding
 
-class MainActivity : AppCompatActivity() {
-	private lateinit var viewBinding: ActivityMainBinding
+class AddProjectActivity : AppCompatActivity() {
+	private lateinit var viewBinding: ActivityAddProjectBinding
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
-		viewBinding = ActivityMainBinding.inflate(layoutInflater)
+		viewBinding = ActivityAddProjectBinding.inflate(layoutInflater)
 		setContentView(viewBinding.root)
 
 		setSupportActionBar(viewBinding.toolbar)
