@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 		super.onStart()
 
 		viewBinding.buttonAdd.setOnClickListener {
-			// Check if name is not empty
+			// Check if name is not empty and clean it
 			val projectName = viewBinding.inputNameEditText.text?.toString()?.trim()
 			if (projectName.isNullOrBlank()) {
 				viewBinding.inputNameLayout.error = "Name cannot be empty"
@@ -43,9 +43,14 @@ class MainActivity : AppCompatActivity() {
 			}
 
 			// Add to database
-
-			// Exit activity
-			this.finish()
+			val storageHelper = StorageHelper(this)
+			val newProject = storageHelper.addProject(projectName, slot)
+			if (newProject != null) {
+				Toast.makeText(this, "Project added", Toast.LENGTH_SHORT).show()
+				this.finish()
+			} else {
+				Toast.makeText(this, "Problem adding project", Toast.LENGTH_SHORT).show()
+			}
 		}
 	}
 }
