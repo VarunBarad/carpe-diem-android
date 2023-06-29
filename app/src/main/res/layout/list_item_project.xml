@@ -36,5 +36,6 @@
 			android:layout_height="wrap_content"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
+			android:backgroundTint="@color/colorDanger"
 			android:text="Delete" />
 </androidx.constraintlayout.widget.ConstraintLayout>

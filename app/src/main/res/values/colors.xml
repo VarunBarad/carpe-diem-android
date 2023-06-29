@@ -17,4 +17,6 @@
 	<color name="colorOnTertiary">#FFFFFFFF</color>
 	<color name="colorTertiaryContainer">#FFFFD8E4</color>
 	<color name="colorOnTertiaryContainer">#FF31111D</color>
+	
+	<color name="colorDanger">#FFCE2029</color>
 </resources>
