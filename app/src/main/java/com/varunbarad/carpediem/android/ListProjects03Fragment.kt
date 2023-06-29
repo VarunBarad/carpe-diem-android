@@ -22,7 +22,7 @@ class ListProjects03Fragment : Fragment() {
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
-	): View? {
+	): View {
 		viewBinding = FragmentListProjects03Binding.inflate(inflater, container, false)
 
 		val recyclerViewLayoutManager = LinearLayoutManager(
