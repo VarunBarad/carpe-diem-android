@@ -15,6 +15,7 @@ data class Project(
 	@Json(name = "last_done_on") val lastDoneOn: LocalDate?,
 ) {
 	companion object {
+		@JvmStatic
 		val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Project>() {
 			override fun areItemsTheSame(oldItem: Project, newItem: Project): Boolean {
 				return (oldItem.id == newItem.id)
