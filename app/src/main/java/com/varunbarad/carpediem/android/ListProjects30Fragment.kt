@@ -60,7 +60,7 @@ class ListProjects30Fragment : Fragment() {
 
 	private fun updateListItems() {
 		val storageHelper = StorageHelper(this.requireContext())
-		val projects = storageHelper.getAllProjects().filter { it.slot == Slot.SLOT_30 }
+		val projects = storageHelper.getAllProjects().filter { it.slot == Slot.SLOT_30 }.sortedBy { it.name }
 		projectsListAdapter.submitList(projects)
 	}
 
