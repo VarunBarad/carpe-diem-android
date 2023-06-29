@@ -47,6 +47,7 @@ class RollProjectActivity : AppCompatActivity() {
 				openAddProjectScreen()
 				true
 			}
+
 			else -> super.onOptionsItemSelected(item)
 		}
 	}
@@ -67,16 +68,25 @@ class RollProjectActivity : AppCompatActivity() {
 		viewBinding.textViewCurrentSlot.text = slotString
 
 		val storageHelper = StorageHelper(this)
-		val project = storageHelper.getAllProjects().filter { it.slot == slot }.randomOrNull()
-		if (project != null) {
-			if (project.name != viewBinding.textViewRolledProject.text.toString()) {
+		val availableProjects = storageHelper.getAllProjects().filter { it.slot == slot }
+		when (availableProjects.size) {
+			0 -> {
+				Toast.makeText(this, "No project in slot $slotString", Toast.LENGTH_SHORT).show()
+			}
+			1 -> {
+				val project = availableProjects.first()
 				viewBinding.textViewRolledProject.text = project.name
 				viewBinding.textViewCurrentSlot.text = slotString
-			} else {
-				rollProject(slot)
 			}
-		} else {
-			Toast.makeText(this, "No project in slot $slotString", Toast.LENGTH_SHORT).show()
+			else -> {
+				val project = availableProjects.random()
+				if (project.name != viewBinding.textViewRolledProject.text.toString()) {
+					viewBinding.textViewRolledProject.text = project.name
+					viewBinding.textViewCurrentSlot.text = slotString
+				} else {
+					rollProject(slot)
+				}
+			}
 		}
 	}
 }
