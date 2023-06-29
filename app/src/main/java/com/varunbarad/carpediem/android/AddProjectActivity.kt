@@ -53,4 +53,10 @@ class AddProjectActivity : AppCompatActivity() {
 			}
 		}
 	}
+
+	override fun onStop() {
+		super.onStop()
+
+		viewBinding.buttonAdd.setOnClickListener(null)
+	}
 }

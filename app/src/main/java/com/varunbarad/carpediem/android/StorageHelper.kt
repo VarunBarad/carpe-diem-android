@@ -50,7 +50,7 @@ class StorageHelper(
 		}
 	}
 
-	private fun getAllProjects(): List<Project> {
+	fun getAllProjects(): List<Project> {
 		val database = sharedPreferences.getString(KEY_DATABASE, "[]")!!
 		return projectListAdapter.fromJson(database)!!
 	}
